@@ -46,6 +46,29 @@
 
   h2 { font-size: 2.2rem; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid var(--border); text-align: left; }
 
+  /* About / Summary Section */
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 35px 40px;
+    margin-bottom: 60px;
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .about-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .about-card p {
+    font-size: 1.02rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
   /* Section Spacing & Typography */
   .section-container { margin-bottom: 70px; }
   .section-label { font-size: 2.2rem; letter-spacing: 2px; color: #eee; font-weight: 800; margin-bottom: 8px; text-align: left; }
@@ -298,8 +321,12 @@
   </div>
 </header>
 
-<h2 class="about" data-i18n="about">About</h2>
-<div class="About">
+<!-- Professional Summary / About Section -->
+<div class="about-card reveal">
+  <h3 data-i18n="about-title">About Me</h3>
+  <p data-i18n="about-desc">
+    I am a data professional holding a B.Tech and an MSc in Computer Science, specializing in turning complex datasets into clear business insights. My core expertise spans Exploratory Data Analysis, predictive modeling, machine learning, and business intelligence dashboards. I love building data-driven solutions that solve real-world problems and drive strategic growth.
+  </p>
 </div>
 
 <div class="section-container reveal">
@@ -348,21 +375,22 @@
       </div>
       <div class="project-content">
         <div class="project-header-row">
-          <h3>Project Title Two</h3>
+          <h3>Olist Sales Analytics</h3>
         </div>
         <!-- Clean, Readable Tech Stack Tags with Isolated Hover Effect -->
         <div class="project-tech-tags">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">FastAPI</span>
-          <span class="tech-tag">Docker</span>
-          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Power Query</span>
+          <span class="tech-tag">DAX</span>
+          <span class="tech-tag">Data Modeling</span>
+          <span class="tech-tag">Dashboards</span>
         </div>
         <p class="project-desc">
-          Describe your second project here. What did you build and why? Highlight the technical challenges you solved.
+          Processed transactional records and structured Power BI data models to track sales trends and business growth metrics.
         </p>
         <ul class="project-bullets">
-          <li>Implemented automated data pipelines for real-time processing</li>
-          <li>Optimized database queries to improve performance by 40%</li>
+          <li>Structured relational data models across multiple transactional datasets</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
         </ul>
         <div class="project-links">
           <a href="https://github.com/BSU04" target="_blank" class="active-link">GitHub ↗</a>
