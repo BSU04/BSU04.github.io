@@ -64,7 +64,7 @@
     margin-bottom: 12px;
   }
   .about-card p {
-    font-size: 1.02rem;
+    font-size: 1.2rem;
     color: var(--muted);
     line-height: 1.7;
   }
@@ -100,18 +100,25 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
   }
 
-  /* Left-side Icon Box */
-  .project-icon-box {
-    background: rgba(139, 124, 246, 0.08);
+  /* Left-side Representation Image Container (Static on hover) */
+  .project-img-box {
+    background: rgba(139, 124, 246, 0.05);
     border: 1px solid rgba(139, 124, 246, 0.2);
-    border-radius: 16px;
-    width: 72px;
-    height: 72px;
-    min-width: 72px;
+    border-radius: 12px;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+  }
+
+  .project-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* Main Card Content Area */
@@ -132,7 +139,7 @@
     color: var(--text);
   }
 
-  /* Highly readable, clean Tech Stack Tags with dedicated subtle hover effect */
+  /* Refined, professional tech stack tags (no hover effects) */
   .project-tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -142,25 +149,16 @@
 
   .tech-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: #c4c4d4;
-    background: rgba(139, 124, 246, 0.06);
-    border: 1px solid rgba(139, 124, 246, 0.15);
-    padding: 6px 12px;
+    color: #a0a0c0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 5px 11px;
     border-radius: 6px;
-    transition: all 0.2s ease-in-out;
     cursor: default;
-  }
-
-  .tech-tag:hover {
-    color: #ffffff;
-    background: rgba(139, 124, 246, 0.25);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 124, 246, 0.2);
   }
 
   /* Main Description */
@@ -226,10 +224,63 @@
     color: var(--accent);
   }
 
-  /* Skills & Tech Stack Spacing */
-  .skills { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 70px; }
-  .skill { background: var(--card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; color: var(--muted); transition: all 0.2s; }
-  .skill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); transform: translateY(-1px); }
+  /* Exact Match Skills Section Styling (No Bullet Points) */
+  .skills-card-container {
+    background: #0d0d1e;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .skills-row-item {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .skills-row-item:last-child {
+    border-bottom: none;
+  }
+
+  .skills-category-title {
+    width: 220px;
+    min-width: 220px;
+    padding: 24px 30px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .skills-pills-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 30px;
+    align-items: center;
+    flex: 1;
+  }
+
+  .skill-badge {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #d0d0e5;
+    cursor: default;
+    transition: all 0.2s ease;
+  }
+
+  .skill-badge:hover {
+    border-color: rgba(139, 124, 246, 0.4);
+    color: #ffffff;
+    background: rgba(139, 124, 246, 0.05);
+  }
 
   /* Experience & Education Spacing */
   .experience { margin-bottom: 70px; text-align: left; }
@@ -280,13 +331,26 @@
       flex-direction: column;
       padding: 24px;
     }
-    .project-icon-box {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      font-size: 1.6rem;
+    .project-img-box {
+      width: 70px;
+      height: 70px;
+      min-width: 70px;
     }
     h1 { font-size: 2.4rem; }
+    .skills-row-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .skills-category-title {
+      width: 100%;
+      min-width: auto;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px 20px;
+    }
+    .skills-pills-group {
+      padding: 16px 20px;
+    }
   }
 </style>
 </head>
@@ -325,7 +389,7 @@
 <div class="about-card reveal">
   <h3 data-i18n="about-title">About Me</h3>
   <p data-i18n="about-desc">
-    I am a data professional holding a B.Tech and an MSc in Computer Science, specializing in turning complex datasets into clear business insights. My core expertise spans Exploratory Data Analysis, predictive modeling, machine learning, and business intelligence dashboards. I love building data-driven solutions that solve real-world problems and drive strategic growth.
+    I am a data science professional holding a B.Tech and an MSc in Computer Science (Data Analytics), specializing in turning complex datasets into clear business insights. My core expertise spans Exploratory Data Analysis, predictive modeling, machine learning, and business intelligence dashboards. I love building data-driven solutions that solve real-world problems and drive strategic growth.
   </p>
 </div>
 
@@ -338,18 +402,18 @@
 
     <!-- Project Card 1 -->
     <div class="card-horizontal">
-      <div class="project-icon-box">
-        🛍️
+      <div class="project-img-box">
+        <img src="project-1.jpg" alt="E-commerce Customer Intelligence Representation">
       </div>
       <div class="project-content">
         <div class="project-header-row">
           <h3>E-commerce Customer Intelligence</h3>
         </div>
-        <!-- Clean, Readable Tech Stack Tags with Isolated Hover Effect -->
+        <!-- Refined Tech Stack Tags -->
         <div class="project-tech-tags">
           <span class="tech-tag">Python</span>
           <span class="tech-tag">EDA</span>
-          <span class="tech-tag">RFM Analysis</span>
+          <span class="tech-tag">RFM</span>
           <span class="tech-tag">Customer Segmentation</span>
           <span class="tech-tag">Customer Value Prediction</span>
           <span class="tech-tag">Market Basket Analysis</span>
@@ -361,6 +425,7 @@
           <li>Analyzed transactional data to uncover sales trends and customer purchasing patterns</li>
           <li>Built RFM customer segments to identify high-value and at-risk customers</li>
           <li>Translated findings into retention and cross-selling opportunities</li>
+          <li>Translated findings into retention and cross-selling opportunities</li>
         </ul>
         <div class="project-links">
           <a href="https://github.com/BSU04" target="_blank" class="active-link">GitHub ↗</a>
@@ -370,20 +435,20 @@
 
     <!-- Project Card 2 -->
     <div class="card-horizontal">
-      <div class="project-icon-box">
-        📊
+      <div class="project-img-box">
+        <img src="project-2.jpg" alt="Olist Sales Analytics Representation">
       </div>
       <div class="project-content">
         <div class="project-header-row">
           <h3>Olist Sales Analytics</h3>
         </div>
-        <!-- Clean, Readable Tech Stack Tags with Isolated Hover Effect -->
+        <!-- Refined Tech Stack Tags -->
         <div class="project-tech-tags">
           <span class="tech-tag">Power BI</span>
           <span class="tech-tag">Power Query</span>
           <span class="tech-tag">DAX</span>
           <span class="tech-tag">Data Modeling</span>
-          <span class="tech-tag">Dashboards</span>
+          <span class="tech-tag">Dashboard</span>
         </div>
         <p class="project-desc">
           Processed transactional records and structured Power BI data models to track sales trends and business growth metrics.
@@ -391,27 +456,127 @@
         <ul class="project-bullets">
           <li>Structured relational data models across multiple transactional datasets</li>
           <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
         </ul>
         <div class="project-links">
           <a href="https://github.com/BSU04" target="_blank" class="active-link">GitHub ↗</a>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Project Card 3 -->
+    <div class="card-horizontal">
+      <div class="project-img-box">
+        <img src="project-3.jpg" alt="Airline Customer Satisfaction">
+      </div>
+      <div class="project-content">
+        <div class="project-header-row">
+          <h3>Airline Customer Satisfaction</h3>
+        </div>
+        <!-- Refined Tech Stack Tags -->
+        <div class="project-tech-tags">
+          <span class="tech-tag">Excel</span>
+          <span class="tech-tag">Formulas</span>
+          <span class="tech-tag">Pivot Table</span>
+          <span class="tech-tag">VLOOKUP</span>
+          <span class="tech-tag">Dashboard</span>
+        </div>
+        <p class="project-desc">
+          Processed transactional records and structured Power BI data models to track sales trends and business growth metrics.
+        </p>
+        <ul class="project-bullets">
+          <li>Structured relational data models across multiple transactional datasets</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+        </ul>
+        <div class="project-links">
+          <a href="https://github.com/BSU04" target="_blank" class="active-link">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End of .projects wrapper container -->
 </div>
 
+<!-- Categorized Skills Section (Exact Match to Image, No Bullet Dots) -->
 <div class="section-container reveal">
-  <h2 data-i18n="techstack">Tech Stack</h2>
-  <div class="skills">
-    <span class="skill">Python</span>
-    <span class="skill">SQL</span>
-    <span class="skill">Excel</span>
-    <span class="skill">Power BI</span>
-    <span class="skill">Matplotlib</span>
-    <span class="skill">Seaborn</span>
-    <span class="skill">Plotly</span>
-    <span class="skill">Scikit-learn</span>
-    <span class="skill">Git/GitHub</span>
+  <h2 data-i18n="skills">Skills</h2>
+  <div class="skills-card-container">
+    
+    <!-- Languages -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Languages</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">SQL</span>
+      </div>
+    </div>
+
+    <!-- Libraries -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Libraries</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Pandas</span>
+        <span class="skill-badge">NumPy</span>
+        <span class="skill-badge">Scikit-learn</span>
+        <span class="skill-badge">Matplotlib</span>
+        <span class="skill-badge">Seaborn</span>
+        <span class="skill-badge">Plotly</span>
+      </div>
+    </div>
+
+    <!-- Data Analysis -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Data Analysis</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Exploratory Data Analysis</span>
+        <span class="skill-badge">Data Cleaning</span>
+        <span class="skill-badge">Data Wrangling</span>
+        <span class="skill-badge">Statistical Analysis</span>
+        <span class="skill-badge">Customer Segmentation</span>
+      </div>
+    </div>
+
+    <!-- Machine Learning -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Machine Learning</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Supervised Learning</span>
+        <span class="skill-badge">Unsupervised Learning</span>
+        <span class="skill-badge">Classification</span>
+        <span class="skill-badge">Regression</span>
+        <span class="skill-badge">Feature Engineering</span>
+        <span class="skill-badge">Model Evaluation</span>
+      </div>
+    </div>
+
+    <!-- Business Intelligence -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Business Intelligence</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Power BI</span>
+        <span class="skill-badge">DAX</span>
+        <span class="skill-badge">Power Query</span>
+        <span class="skill-badge">Data Modeling</span>
+        <span class="skill-badge">Dashboard Development</span>
+        <span class="skill-badge">KPI Reporting</span>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="skills-row-item">
+      <div class="skills-category-title">Tools</div>
+      <div class="skills-pills-group">
+        <span class="skill-badge">Excel</span>
+        <span class="skill-badge">SQL Server</span>
+        <span class="skill-badge">SSMS</span>
+        <span class="skill-badge">Git/GitHub</span>
+        <span class="skill-badge">Jupyter Notebook</span>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -420,11 +585,11 @@
   <div class="experience">
     <div class="job">
       <h3 data-i18n="ed1t">MSc Computer Science</h3>
-      <div class="meta" data-i18n="ed1m">Rajagiri College of Social Sciences &mdash; 2024</div>
+      <div class="meta" data-i18n="ed1m">Rajagiri College of Social Sciences, Kalamassery, Kerala &mdash; 2024</div>
     </div>
     <div class="job">
       <h3 data-i18n="ed1t">BTech Computer Science</h3>
-      <div class="meta" data-i18n="ed1m">Rajagiri College of Social Sciences &mdash; 2024</div>
+      <div class="meta" data-i18n="ed1m">College of Engineering and Management, Punnapra, Kerala &mdash; 2021</div>
     </div>
   </div>
 </div>
@@ -456,7 +621,7 @@
 const i18n = {
   en: {
     tagline: "Data Analyst / Data Scientist / BI Analyst",
-    techstack: "Tech Stack", exp: "Experience", edu: "Education", connect: "Let's Connect",
+    skills: "Skills", exp: "Experience", edu: "Education", connect: "Let's Connect",
     dlresume: "Download Resume",
     footer: "&copy; 2026 Balu S Unny &mdash; Built with purpose."
   }
