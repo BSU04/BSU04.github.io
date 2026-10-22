@@ -21,6 +21,89 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--bg); background-image: radial-gradient(ellipse at 20% 0%, rgba(139,124,246,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(245,158,11,0.04) 0%, transparent 50%); color: var(--text); line-height: 1.7; }
 
+  html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+  body { padding-top: 0; }
+
+  /* Sticky, compact navigation */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: rgba(10, 10, 20, 0.82);
+    border-bottom: 1px solid rgba(139, 124, 246, 0.16);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .nav-inner {
+    max-width: none;
+    width: 100%;
+    min-height: 66px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .nav-brand { display: inline-flex; align-items: center; flex: 0 0 auto; border-radius: 9px; }
+  .nav-brand svg { display: block; transition: transform 0.25s ease, filter 0.25s ease; }
+  .nav-brand:hover svg { transform: translateY(-1px); filter: drop-shadow(0 0 8px rgba(139, 124, 246, 0.28)); }
+  .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px;
+    color: #aaaac2;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s ease;
+  }
+  .nav-link:hover, .nav-link.active { color: #f1efff; background: rgba(139, 124, 246, 0.07); }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+  .nav-resume {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-left: 8px;
+    padding: 9px 16px;
+    border: 1px solid rgba(139, 124, 246, 0.65);
+    border-radius: 9px;
+    color: #fff;
+    background: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 5px 16px rgba(139, 124, 246, 0.12);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-resume:hover { background: #7969e8; transform: translateY(-1px); box-shadow: 0 7px 20px rgba(139, 124, 246, 0.2); }
+  .nav-toggle { display: none; }
+  .nav-link:focus-visible, .nav-resume:focus-visible, .nav-brand:focus-visible, .nav-toggle:focus-visible { outline: 2px solid #b5a8ff; outline-offset: 3px; }
+  .light .site-nav { background: rgba(248, 247, 244, 0.88); border-bottom-color: var(--border); }
+  .light .nav-link { color: #55556a; }
+  .light .nav-link:hover, .light .nav-link.active { color: #26213f; }
+
+  /* Keep anchored headings visible below the sticky navbar */
+  #about, #projects, #skills, #education, #contact { scroll-margin-top: 88px; }
+
   /* Widen content area for a more generous desktop layout */
   .container { max-width: 1160px; margin: 0 auto; padding: 60px 30px; }
 
@@ -139,7 +222,7 @@
     color: var(--text);
   }
 
-  /* Refined, professional tech stack tags (no hover effects) */
+  /* Refined tech stack tags with subtle hover interaction */
   .project-tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -159,6 +242,15 @@
     padding: 5px 11px;
     border-radius: 6px;
     cursor: default;
+    transition: color 220ms ease, background-color 220ms ease, border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .tech-tag:hover {
+    color: #d8d0ff;
+    background: rgba(139, 124, 246, 0.12);
+    border-color: rgba(139, 124, 246, 0.48);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 124, 246, 0.12);
   }
 
   /* Main Description */
@@ -224,10 +316,10 @@
     color: var(--accent);
   }
 
-  /* Exact Match Skills Section Styling (No Bullet Points) */
+  /* Compact Skills Card Styling (No Bullet Dots + Vertical Separator + Reduced Padding) */
   .skills-card-container {
-    background: #0d0d1e;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 0;
     overflow: hidden;
@@ -244,42 +336,40 @@
   }
 
   .skills-category-title {
-    width: 220px;
-    min-width: 220px;
-    padding: 24px 30px;
+    width: 200px;
+    min-width: 200px;
+    padding: 16px 24px;
     font-size: 1.05rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text);
     display: flex;
     align-items: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .skills-pills-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 20px 30px;
+    gap: 10px;
+    padding: 14px 24px;
     align-items: center;
     flex: 1;
   }
 
   .skill-badge {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 8px 20px;
+    background: rgba(139, 124, 246, 0.04);
+    border: 1px solid rgba(139, 124, 246, 0.22);
+    padding: 6px 16px;
     border-radius: 30px;
     font-size: 0.9rem;
     font-weight: 400;
-    color: #d0d0e5;
+    color: #e8e8f0;
     cursor: default;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease;
   }
 
   .skill-badge:hover {
-    border-color: rgba(139, 124, 246, 0.4);
-    color: #ffffff;
-    background: rgba(139, 124, 246, 0.05);
+    border-color: rgba(139, 124, 246, 0.5);
   }
 
   /* Experience & Education Spacing */
@@ -345,19 +435,91 @@
       width: 100%;
       min-width: auto;
       border-right: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 18px;
     }
     .skills-pills-group {
-      padding: 16px 20px;
+      padding: 12px 18px;
     }
+  }
+
+  @media (max-width: 760px) {
+    .nav-inner { min-height: 60px; padding: 0 16px; }
+    .nav-toggle {
+      display: flex;
+      width: 42px;
+      height: 42px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(19, 19, 42, 0.85);
+      cursor: pointer;
+    }
+    .nav-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--text); transition: transform 0.2s ease, opacity 0.2s ease; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-links {
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 12px 16px 18px;
+      background: rgba(10, 10, 20, 0.97);
+      border-bottom: 1px solid rgba(139, 124, 246, 0.2);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-links.open { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .nav-link { padding: 11px 12px; }
+    .nav-link::after { left: 12px; right: auto; width: 30px; bottom: 4px; }
+    .nav-resume { margin: 8px 0 0; min-height: 42px; }
+    .light .nav-links { background: rgba(248, 247, 244, 0.98); }
+    .container { padding-top: 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 </style>
 </head>
 <body>
 
 <div class="lightbox" onclick="this.classList.remove('active')"><img id="lb-img" src="" alt=""></div>
-<a href="#" class="logo-fixed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="36" height="36"><rect width="100" height="100" rx="20" fill="#13132a" stroke="#8b7cf6" stroke-width="4"/><text x="50" y="68" font-family="monospace" font-size="52" font-weight="bold" fill="#8b7cf6" text-anchor="middle">BSU</text></svg></a>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand" aria-label="BSU — back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
+        <rect x="2" y="2" width="96" height="96" rx="19" fill="#13132a" stroke="#8b7cf6" stroke-width="4"/>
+        <text x="50" y="64" font-family="monospace" font-size="39" font-weight="700" fill="#a99cff" text-anchor="middle">BSU</text>
+      </svg>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#education">Education</a>
+      <a class="nav-resume" href="resume.pdf" download>Resume <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</nav>
 <!---<div class="top-controls">
   <div style="position:relative">
     <button class="top-btn" onclick="document.querySelector('.lang-menu').classList.toggle('show')">EN</button>
@@ -374,26 +536,26 @@
 <!-- MAIN CONTAINER STARTS HERE -->
 <div class="container">
 
-<header>
+<header id="top">
   <h1>Balu <span>S Unny</span></h1>
   <div class="tagline" data-i18n="tagline">Data Analyst / Data Scientist / BI Analyst</div>
   <div class="links">
-    <a href="https://github.com/BSU04">GitHub</a>
+    <!--<a href="https://github.com/BSU04">GitHub</a>
     <a href="https://linkedin.com/in/bsu04">LinkedIn</a>
-    <a href="mailto:itsmebalu52@gmail.com">Email</a>
+    <a href="mailto:itsmebalu52@gmail.com">Email</a>-->
     <a href="resume.pdf" download style="background: var(--accent); color: #fff; font-weight: 600;" data-i18n="dlresume">Download Resume</a>
   </div>
 </header>
 
 <!-- Professional Summary / About Section -->
-<div class="about-card reveal">
+<div class="about-card reveal" id="about">
   <h3 data-i18n="about-title">About Me</h3>
   <p data-i18n="about-desc">
     I am a data science professional holding a B.Tech and an MSc in Computer Science (Data Analytics), specializing in turning complex datasets into clear business insights. My core expertise spans Exploratory Data Analysis, predictive modeling, machine learning, and business intelligence dashboards. I love building data-driven solutions that solve real-world problems and drive strategic growth.
   </p>
 </div>
 
-<div class="section-container reveal">
+<div class="section-container reveal" id="projects">
   <div class="section-label">Projects</div>
   <!--- <p class="section-desc">A closer look at the problems I solve and the impact I aim to create.</p> -->
   <hr class="section-divider">
@@ -466,16 +628,16 @@
     </div>
 
     <!-- Project Card 3 -->
-    <div class="card-horizontal">
+    <!--<div class="card-horizontal">
       <div class="project-img-box">
         <img src="project-3.jpg" alt="Airline Customer Satisfaction">
       </div>
       <div class="project-content">
         <div class="project-header-row">
           <h3>Airline Customer Satisfaction</h3>
-        </div>
+        </div>-->
         <!-- Refined Tech Stack Tags -->
-        <div class="project-tech-tags">
+        <!--<div class="project-tech-tags">
           <span class="tech-tag">Excel</span>
           <span class="tech-tag">Formulas</span>
           <span class="tech-tag">Pivot Table</span>
@@ -495,13 +657,13 @@
           <a href="https://github.com/BSU04" target="_blank" class="active-link">GitHub ↗</a>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </div> <!-- End of .projects wrapper container -->
 </div>
 
-<!-- Categorized Skills Section (Exact Match to Image, No Bullet Dots) -->
-<div class="section-container reveal">
+<!-- Categorized Skills Section (Vertical Separator, No Bullet Dots, Compact Padding) -->
+<div class="section-container reveal" id="skills">
   <h2 data-i18n="skills">Skills</h2>
   <div class="skills-card-container">
     
@@ -531,10 +693,12 @@
     <div class="skills-row-item">
       <div class="skills-category-title">Data Analysis</div>
       <div class="skills-pills-group">
-        <span class="skill-badge">Exploratory Data Analysis</span>
+        <span class="skill-badge">Exploratory Data Analysis (EDA)</span>
         <span class="skill-badge">Data Cleaning</span>
         <span class="skill-badge">Data Wrangling</span>
+        <span class="skill-badge">Data Transformation</span>
         <span class="skill-badge">Statistical Analysis</span>
+        <span class="skill-badge">Correlation Analysis</span>
         <span class="skill-badge">Customer Segmentation</span>
       </div>
     </div>
@@ -561,6 +725,7 @@
         <span class="skill-badge">Power Query</span>
         <span class="skill-badge">Data Modeling</span>
         <span class="skill-badge">Dashboard Development</span>
+        <span class="skill-badge">Data Visualization</span>
         <span class="skill-badge">KPI Reporting</span>
       </div>
     </div>
@@ -580,7 +745,7 @@
   </div>
 </div>
 
-<div class="section-container reveal">
+<div class="section-container reveal" id="education">
   <h2 data-i18n="edu">Education</h2>
   <div class="experience">
     <div class="job">
@@ -594,13 +759,13 @@
   </div>
 </div>
 
-<div class="contact reveal">
+<div class="contact reveal" id="contact">
   <h2 data-i18n="connect">Let's Connect</h2>
   <p data-i18n="connectp">I'm currently open to new opportunities. Let's chat about how I can contribute to your team.</p>
   <div class="links">
     <a href="mailto:itsmebalu52@gmail.com">itsmebalu52@gmail.com</a>
     <a href="https://linkedin.com/in/bsu04">LinkedIn</a>
-    <a href="https://github.com/BSU04">GitHub</a>
+    <!--<a href="https://github.com/BSU04">GitHub</a>-->
   </div>
 </div>
 
@@ -610,13 +775,136 @@
     <a href="https://linkedin.com/in/bsu04">LinkedIn</a>
     <a href="mailto:itsmebalu52@gmail.com">Email</a>
   </div>
-  <span data-i18n="footer">&copy; 2026 Balu S Unny &mdash; Built with purpose.</span>
+  <span data-i18n="footer">&copy; 2026 Balu S Unny</span>
 </footer>
 
 </div>
 <!-- MAIN CONTAINER ENDS HERE -->
 
 <script>
+// Responsive navigation + stable active-section tracking.
+(() => {
+  const nav = document.querySelector('.site-nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.nav-links');
+  const navLinks = [...document.querySelectorAll('.nav-link')];
+  const sections = navLinks
+    .map(link => document.getElementById(link.hash.slice(1)))
+    .filter(Boolean);
+
+  let programmaticNavigation = false;
+  let lastClickedId = null;
+
+  const setActive = (id) => {
+    navLinks.forEach(link => {
+      const active = link.hash === `#${id}`;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    menu.classList.toggle('open', !isOpen);
+  });
+
+  // Clicking a navigation link owns the active state for the entire smooth scroll.
+  // Scroll-based tracking is deliberately paused during this programmatic movement
+  // so it cannot immediately replace the clicked link with the previous section.
+  navLinks.forEach(link => {
+    link.addEventListener('click', event => {
+      const target = document.getElementById(link.hash.slice(1));
+      if (!target) return;
+      event.preventDefault();
+
+      lastClickedId = target.id;
+      programmaticNavigation = true;
+      setActive(lastClickedId);
+      closeMenu();
+      history.replaceState(null, '', link.hash);
+
+      target.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+      });
+
+      // Keep the clicked link locked as active after the smooth scroll completes.
+      // It is released only when the visitor manually scrolls or resizes the page.
+    });
+  });
+
+  document.addEventListener('click', event => {
+    if (!nav.contains(event.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key) && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+      resumeScrollTracking();
+    }
+    if (event.key === 'Escape') {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+
+  // Infer the visible section only during normal/manual scrolling.
+  function updateActiveFromScroll() {
+    if (programmaticNavigation || !sections.length) return;
+
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atBottom) {
+      setActive(sections[sections.length - 1].id);
+      return;
+    }
+
+    const activationLine = nav.getBoundingClientRect().height + 18;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= activationLine) current = section;
+      else break;
+    }
+    if (current) setActive(current.id);
+  }
+
+  window.addEventListener('scroll', updateActiveFromScroll, { passive: true });
+  window.addEventListener('resize', updateActiveFromScroll);
+  // Release the click lock only on an explicit manual scroll gesture. This avoids
+  // scroll-position calculations fighting the link the visitor just selected.
+  const resumeScrollTracking = () => {
+    if (!programmaticNavigation) return;
+    programmaticNavigation = false;
+    updateActiveFromScroll();
+  };
+  window.addEventListener('wheel', resumeScrollTracking, { passive: true });
+  window.addEventListener('touchstart', resumeScrollTracking, { passive: true });
+  window.addEventListener('pointerdown', event => {
+    // A scrollbar drag is a manual scroll gesture; ordinary clicks don't unlock it.
+    if (event.clientX >= document.documentElement.clientWidth - 18) resumeScrollTracking();
+  }, { passive: true });
+
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    if (sections.some(section => section.id === id)) {
+      lastClickedId = id;
+      setActive(id);
+    }
+  });
+
+  // Correct initial state, including when opening the page with a section hash.
+  const initialId = location.hash.slice(1);
+  if (sections.some(section => section.id === initialId)) setActive(initialId);
+  else updateActiveFromScroll();
+})();
+
 // i18n translations
 const i18n = {
   en: {
