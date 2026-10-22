@@ -885,7 +885,13 @@
     updateActiveFromScroll();
   };
   window.addEventListener('wheel', resumeScrollTracking, { passive: true });
-  window.addEventListener('touchstart', resumeScrollTracking, { passive: true });
+  // On mobile, tapping a navigation item can be followed by touch events while
+  // the menu closes and the browser begins smooth scrolling. Do not let a touch
+  // originating inside the navbar release the clicked link's active-state lock.
+  window.addEventListener('touchstart', event => {
+    if (nav.contains(event.target)) return;
+    resumeScrollTracking();
+  }, { passive: true });
   window.addEventListener('pointerdown', event => {
     // A scrollbar drag is a manual scroll gesture; ordinary clicks don't unlock it.
     if (event.clientX >= document.documentElement.clientWidth - 18) resumeScrollTracking();
