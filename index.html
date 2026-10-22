@@ -51,9 +51,10 @@
     justify-content: space-between;
     gap: 24px;
   }
-  .nav-brand { display: inline-flex; align-items: center; flex: 0 0 auto; border-radius: 9px; }
-  .nav-brand svg { display: block; transition: transform 0.25s ease, filter 0.25s ease; }
+  .nav-brand { display: inline-flex; align-items: center; gap: 12px; flex: 0 0 auto; border-radius: 9px; color: var(--text); text-decoration: none; }
+  .nav-brand svg { display: block; flex: 0 0 auto; transition: transform 0.25s ease, filter 0.25s ease; }
   .nav-brand:hover svg { transform: translateY(-1px); filter: drop-shadow(0 0 8px rgba(56, 169, 248, 0.30)); }
+  .nav-brand-name { font-size: 0.98rem; font-weight: 700; letter-spacing: -0.2px; white-space: nowrap; }
   .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
   .nav-link {
     position: relative;
@@ -122,9 +123,80 @@
   .links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
   .links a { color: var(--accent); text-decoration: none; font-size: 0.95rem; padding: 8px 18px; border: 1px solid var(--accent); border-radius: 20px; transition: all 0.2s; }
   .links a:hover { background: var(--accent); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
-  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .cta a { color: #fff; text-decoration: none; font-size: 0.95rem; padding: 10px 24px; background: var(--accent); border-radius: 8px; font-weight: 600; transition: all 0.2s; }
-  .cta a:hover { background: #3a8aee; transform: translateY(-1px); }
+  .cta { display: flex; gap: 12px; justify-content: flex-start; flex-wrap: wrap; }
+  .cta a { color: #fff; text-decoration: none; font-size: 0.95rem; padding: 10px 24px; background: var(--accent); border-radius: 30px; font-weight: 600; transition: all 0.2s; border: 1px solid var(--accent); }
+  .cta a:hover { background: #2588D8; transform: translateY(-1px); }
+
+  /* Hero redesign only: preserve the v5.3 palette and all following sections. */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 64px);
+    min-height: 610px;
+    padding: 48px 0 62px;
+    text-align: left;
+    position: relative;
+    isolation: isolate;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 54%;
+    height: 90%;
+    right: -8%;
+    top: 2%;
+    background: radial-gradient(ellipse, rgba(56,169,248,0.12), transparent 68%);
+    pointer-events: none;
+  }
+  .hero-copy { min-width: 0; }
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    max-width: 100%;
+    margin-bottom: 24px;
+    padding: 8px 13px;
+    border: 1px solid rgba(56,169,248,0.24);
+    border-radius: 999px;
+    color: var(--accent);
+    background: rgba(56,169,248,0.06);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+  }
+  .hero-kicker::before { content: ""; width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px rgba(56,169,248,0.65); }
+  .hero h1 { max-width: 720px; margin: 0 0 20px; font-size: clamp(2.65rem, 4.5vw, 4.55rem); font-weight: 800; line-height: 1.05; letter-spacing: -2.2px; color: var(--text); }
+  .hero h1 .hero-highlight { color: var(--accent); }
+  .hero-description { max-width: 650px; margin: 0 0 28px; color: var(--muted); font-size: clamp(1rem, 1.25vw, 1.17rem); line-height: 1.75; }
+  .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px; margin-bottom: 34px; }
+  .hero-actions .hero-primary { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; background: var(--accent); color: #fff; border: 1px solid var(--accent); text-decoration: none; font-weight: 600; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; box-shadow: 0 8px 24px rgba(56,169,248,0.13); }
+  .hero-actions .hero-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; background: rgba(8,13,25,0.25); color: var(--text); border: 1px solid rgba(56,169,248,0.48); text-decoration: none; font-weight: 500; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+  .hero-actions .hero-primary:hover, .hero-actions .hero-secondary:hover { transform: translateY(-2px); }
+  .hero-actions .hero-primary:hover { background: #2588D8; box-shadow: 0 10px 28px rgba(56,169,248,0.22); }
+  .hero-actions .hero-secondary:hover { background: rgba(56,169,248,0.08); border-color: var(--accent); }
+  .hero-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 17px 20px; }
+  .hero-tool { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: 0.96rem; white-space: nowrap; }
+  .hero-tool-mark { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; border: 1px solid rgba(56,169,248,0.35); border-radius: 50%; color: var(--accent); background: rgba(56,169,248,0.06); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; }
+  .hero-tool-mark img { width: 20px; height: 20px; object-fit: contain; display: block; }
+  .hero-visual { position: relative; min-height: 430px; display: flex; align-items: center; justify-content: center; perspective: 1000px; }
+  .hero-visual::before { content: ""; position: absolute; width: 76%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(56,169,248,0.12), transparent 70%); filter: blur(10px); }
+  .visual-grid { position: absolute; inset: 10% 0; opacity: .24; background-image: linear-gradient(rgba(56,169,248,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(56,169,248,.12) 1px, transparent 1px); background-size: 42px 42px; mask-image: radial-gradient(ellipse at center, #000 8%, transparent 72%); }
+  .glass-card { position: absolute; display: flex; align-items: center; gap: 17px; width: min(82%, 365px); min-height: 112px; padding: 20px 22px; border: 1px solid rgba(56,169,248,0.55); border-radius: 16px; background: linear-gradient(115deg, rgba(22,65,117,0.72), rgba(13,23,40,0.82) 72%); box-shadow: 0 18px 50px rgba(0,0,0,0.22), inset 0 1px 0 rgba(225,234,246,0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .glass-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: linear-gradient(135deg, rgba(56,169,248,0.12), transparent 50%); }
+  .glass-card:nth-of-type(2) { top: 6%; right: 5%; transform: rotate(7deg); z-index: 3; }
+  .glass-card:nth-of-type(3) { top: 34%; left: 13%; transform: rotate(4deg); z-index: 2; }
+  .glass-card:nth-of-type(4) { bottom: 5%; left: 8%; transform: rotate(7deg); z-index: 1; }
+  .glass-icon { flex: 0 0 48px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  .glass-icon svg { width: 100%; height: 100%; filter: drop-shadow(0 0 9px rgba(56,169,248,0.18)); }
+  .glass-title { display: block; color: var(--text); font-size: 1.12rem; font-weight: 600; line-height: 1.3; }
+  .glass-subtitle { display: block; margin-top: 5px; color: #B5C8DF; font-size: 0.92rem; line-height: 1.4; }
+  .visual-orb { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px rgba(56,169,248,0.5); }
+  .visual-orb.orb-one { top: 16%; left: 12%; }
+  .visual-orb.orb-two { right: 1%; top: 48%; width: 18px; height: 18px; }
+  .visual-orb.orb-three { bottom: 9%; left: 1%; width: 9px; height: 9px; }
 
   .summary { text-align: center; max-width: 700px; margin: 30px auto 50px; color: var(--muted); font-size: 1.05rem; }
 
@@ -495,6 +567,42 @@
     .container { padding-top: 28px; }
   }
 
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 1fr) minmax(290px, .85fr); gap: 20px; min-height: 560px; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 3.6rem); letter-spacing: -1.6px; }
+    .glass-card { width: 88%; padding: 17px; gap: 12px; }
+    .glass-icon { width: 40px; height: 40px; flex-basis: 40px; }
+    .glass-title { font-size: 1rem; }
+    .glass-subtitle { font-size: .83rem; }
+    .hero-tools { gap: 12px; }
+  }
+  @media (max-width: 760px) {
+    .nav-brand { gap: 9px; }
+    .nav-brand-name { font-size: .9rem; }
+    .hero { grid-template-columns: 1fr; min-height: 0; gap: 18px; padding: 42px 0 40px; }
+    .hero::before { width: 100%; height: 55%; right: 0; top: 42%; }
+    .hero-kicker { font-size: .65rem; letter-spacing: .6px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(2.55rem, 10vw, 3.5rem); letter-spacing: -1.5px; }
+    .hero-description { font-size: 1rem; margin-bottom: 24px; }
+    .hero-actions { margin-bottom: 26px; }
+    .hero-actions .hero-primary, .hero-actions .hero-secondary { padding: 11px 18px; }
+    .hero-tools { gap: 12px 16px; }
+    .hero-tool { font-size: .88rem; gap: 7px; }
+    .hero-tool-mark { width: 31px; height: 31px; }
+    .hero-visual { min-height: 340px; margin-top: 4px; }
+    .glass-card { width: min(82%, 340px); min-height: 92px; padding: 15px 17px; }
+    .glass-card:nth-of-type(2) { top: 3%; right: 4%; }
+    .glass-card:nth-of-type(3) { top: 34%; left: 8%; }
+    .glass-card:nth-of-type(4) { bottom: 3%; left: 5%; }
+  }
+  @media (max-width: 420px) {
+    .hero-kicker { font-size: .58rem; padding: 7px 9px; }
+    .hero h1 { font-size: 2.35rem; }
+    .hero-actions { gap: 9px; }
+    .hero-actions .hero-primary, .hero-actions .hero-secondary { padding: 10px 14px; font-size: .9rem; }
+    .hero-visual { min-height: 310px; }
+    .glass-card { width: 88%; }
+  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -511,6 +619,7 @@
         <rect x="2" y="2" width="96" height="96" rx="19" fill="#0D1728" stroke="#38A9F8" stroke-width="4"/>
         <text x="50" y="64" font-family="monospace" font-size="39" font-weight="700" fill="#8BD3FF" text-anchor="middle">BSU</text>
       </svg>
+      <span class="nav-brand-name">Balu S Unny</span>
     </a>
 
     <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
@@ -542,14 +651,45 @@
 <!-- MAIN CONTAINER STARTS HERE -->
 <div class="container">
 
-<header id="top">
-  <h1>Balu <span>S Unny</span></h1>
-  <div class="tagline" data-i18n="tagline">Data Analyst / Data Scientist / BI Analyst</div>
-  <div class="links">
-    <!--<a href="https://github.com/BSU04">GitHub</a>
-    <a href="https://linkedin.com/in/bsu04">LinkedIn</a>
-    <a href="mailto:itsmebalu52@gmail.com">Email</a>-->
-    <a href="resume.pdf" download style="background: var(--accent); color: #fff; font-weight: 600;" data-i18n="dlresume">Download Resume</a>
+<header id="top" class="hero">
+  <div class="hero-copy">
+    <div class="hero-kicker">DATA ANALYST &nbsp;·&nbsp; DATA SCIENTIST &nbsp;·&nbsp; BI ANALYST</div>
+    <h1>Turning Data Into Meaningful <span class="hero-highlight">Insights</span></h1>
+    <p class="hero-description">I analyze complex data, build insightful dashboards, and apply machine learning to solve real-world business problems.</p>
+    <div class="hero-actions">
+      <a class="hero-primary" href="#projects">Explore Projects <span aria-hidden="true">→</span></a>
+      <a class="hero-secondary" href="#contact">Let's Connect</a>
+    </div>
+    <div class="hero-tools" aria-label="Core tools">
+      <span class="hero-tool"><span class="hero-tool-mark"><img src="logos/python.png" alt="Python logo"></span>Python</span>
+      <span class="hero-tool"><span class="hero-tool-mark"><img src="logos/sql.svg" alt="SQL logo"></span>SQL</span>
+      <span class="hero-tool"><span class="hero-tool-mark"><img src="logos/power bi.png" alt="Power BI logo"></span>Power BI</span>
+      <span class="hero-tool"><span class="hero-tool-mark"><img src="logos/excel.svg" alt="Excel logo"></span>Excel</span>
+    </div>
+  </div>
+  <div class="hero-visual" aria-label="Analytics, visualization, and machine learning illustration">
+    <div class="visual-grid" aria-hidden="true"></div>
+    <span class="visual-orb orb-one" aria-hidden="true"></span>
+    <span class="visual-orb orb-two" aria-hidden="true"></span>
+    <span class="visual-orb orb-three" aria-hidden="true"></span>
+    <div class="glass-card">
+      <span class="glass-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M7 38V23h8v15H7Zm13 0V11h8v27h-8Zm13 0V17h8v21h-8Z" fill="currentColor"/><path d="M5 41h38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span><span class="glass-title">Analytics</span><span class="glass-subtitle">Find insights</span></span>
+    </div>
+    <div class="glass-card">
+      <span class="glass-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 5a19 19 0 1 0 19 19H24V5Z" fill="currentColor"/><path d="M29 5.7V19h13.3A19 19 0 0 0 29 5.7Z" fill="currentColor" opacity=".55"/><path d="M27 3v16h16A19 19 0 0 0 27 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <span><span class="glass-title">Visualization</span><span class="glass-subtitle">Tell the story</span></span>
+    </div>
+    <div class="glass-card">
+      <span class="glass-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m24 4 16 9v20l-16 10L8 33V13L24 4Z"/><path d="m24 4 0 10m16-1-9 5m9 15-10-5m-6 15V32M8 33l10-6M8 13l10 6m6-5 7 4v9l-7 5-7-5v-9l7-4Z"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+      </span>
+      <span><span class="glass-title">Machine Learning</span><span class="glass-subtitle">Predict the future</span></span>
+    </div>
   </div>
 </header>
 
