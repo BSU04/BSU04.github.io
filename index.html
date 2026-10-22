@@ -836,13 +836,43 @@
       const scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
       if (window.matchMedia('(max-width: 760px)').matches) {
-        // Mobile browsers can calculate scrollIntoView inconsistently as the
-        // browser chrome/visual viewport changes. Align the selected section
-        // explicitly beneath the sticky navbar, without changing desktop behavior.
+        // Mobile browser chrome can change the visual viewport during a smooth
+        // scroll. Align the selected section below the sticky navbar, then make
+        // one final correction after scrolling settles. Desktop behavior is unchanged.
         window.requestAnimationFrame(() => {
-          const navHeight = nav.getBoundingClientRect().height;
-          const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
-          window.scrollTo({ top: Math.max(0, targetTop), behavior: scrollBehavior });
+          window.requestAnimationFrame(() => {
+            const alignTarget = (behavior) => {
+              const navBottom = nav.getBoundingClientRect().bottom;
+              const targetTop = target.getBoundingClientRect().top;
+              const desiredTop = navBottom + 20;
+              const absoluteTop = window.scrollY + targetTop - desiredTop;
+              window.scrollTo({ top: Math.max(0, absoluteTop), behavior });
+            };
+
+            alignTarget(scrollBehavior);
+
+            let alignmentFinished = false;
+            const finishAlignment = () => {
+              if (alignmentFinished) return;
+              alignmentFinished = true;
+              window.removeEventListener('scrollend', finishAlignment);
+              if (lastClickedId !== target.id || !programmaticNavigation) return;
+
+              // Recalculate against the final mobile viewport so no preceding
+              // section remains visible above the selected section heading.
+              const navBottom = nav.getBoundingClientRect().bottom;
+              const targetTop = target.getBoundingClientRect().top;
+              const delta = targetTop - (navBottom + 20);
+              if (Math.abs(delta) > 2) {
+                window.scrollTo({ top: Math.max(0, window.scrollY + delta), behavior: 'auto' });
+              }
+            };
+
+            // scrollend is supported by current mobile browsers; the timeout is
+            // a fallback for browsers that do not dispatch it.
+            window.addEventListener('scrollend', finishAlignment, { once: true });
+            window.setTimeout(finishAlignment, 900);
+          });
         });
       } else {
         target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
