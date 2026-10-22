@@ -833,10 +833,20 @@
       closeMenu();
       history.replaceState(null, '', link.hash);
 
-      target.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-        block: 'start'
-      });
+      const scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        // Mobile browsers can calculate scrollIntoView inconsistently as the
+        // browser chrome/visual viewport changes. Align the selected section
+        // explicitly beneath the sticky navbar, without changing desktop behavior.
+        window.requestAnimationFrame(() => {
+          const navHeight = nav.getBoundingClientRect().height;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: scrollBehavior });
+        });
+      } else {
+        target.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+      }
 
       // Keep the clicked link locked as active after the smooth scroll completes.
       // It is released only when the visitor manually scrolls or resizes the page.
