@@ -1399,6 +1399,38 @@
     }
   }
 
+
+
+  /* TEST ONLY: remove the outer section border and all shell shadows completely.
+     The hero, inner cards, dividers, timeline lines, icon outlines, and decorative details stay untouched. */
+  #about.about-card.about-glass,
+  #projects.section-container,
+  #skills.section-container.skills-showcase,
+  #education.section-container.education-timeline,
+  #contact.contact.contact-split {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+
+
+  /* Final test: remove the visible outer panel shapes themselves, not just their outlines.
+     Interior cards, social icon rings, dividers, timeline rails, and hero remain unchanged. */
+  #about.about-card.about-glass,
+  #projects.section-container,
+  #skills.section-container.skills-showcase,
+  #education.section-container.education-timeline,
+  #contact.contact.contact-split {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
 </style>
 </head>
 <body>
