@@ -1522,6 +1522,130 @@
     }
   }
 
+
+
+  /* Final requested refinements: upgraded Projects introduction and larger About avatar. */
+  #projects .projects-intro { margin: 0 0 26px; }
+  #projects .projects-eyebrow {
+    display: block;
+    margin-bottom: 4px;
+    color: #ffad96;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+  }
+  #projects .projects-intro h2 {
+    margin: 0 0 8px;
+    padding: 0;
+    border: 0;
+    text-align: left;
+    color: #f5edf5;
+    font-size: clamp(2rem, 3vw, 2.65rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -.035em;
+  }
+  #projects .projects-intro h2 span {
+    background: linear-gradient(100deg, #ffad72 0%, #ff887f 48%, #d884d7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  #projects .projects-intro p {
+    max-width: 780px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.68;
+  }
+
+  /* Enlarged avatar placeholder so a profile photo can use the same circular area later. */
+  #about .about-avatar-wrap { width: 156px; height: 156px; }
+  #about .about-avatar { width: 142px; height: 142px; }
+  #about .about-avatar svg { width: 82px; height: 82px; }
+  @media (max-width: 760px) {
+    #projects .projects-intro p { font-size: 1.02rem; line-height: 1.65; }
+    #about .about-avatar-wrap { width: 136px; height: 136px; }
+    #about .about-avatar { width: 124px; height: 124px; }
+    #about .about-avatar svg { width: 72px; height: 72px; }
+  }
+  @media (max-width: 420px) {
+    #projects .projects-intro p { font-size: .98rem; }
+    #about .about-avatar-wrap { width: 126px; height: 126px; }
+    #about .about-avatar { width: 114px; height: 114px; }
+    #about .about-avatar svg { width: 66px; height: 66px; }
+  }
+
+
+  /* Avatar size refinement only — keep the rest of the About layout unchanged. */
+  #about .about-avatar-wrap {
+    width: 220px;
+    height: 220px;
+  }
+  #about .about-avatar {
+    width: 200px;
+    height: 200px;
+  }
+  #about .about-avatar svg {
+    width: 116px;
+    height: 116px;
+  }
+  #about .about-orb-one {
+    width: 13px;
+    height: 13px;
+    top: 66px;
+    right: 4px;
+  }
+  #about .about-orb-two {
+    width: 15px;
+    height: 15px;
+    right: 4px;
+    bottom: 28px;
+  }
+  @media (max-width: 760px) {
+    #about .about-avatar-wrap {
+      width: 184px;
+      height: 184px;
+    }
+    #about .about-avatar {
+      width: 166px;
+      height: 166px;
+    }
+    #about .about-avatar svg {
+      width: 96px;
+      height: 96px;
+    }
+    #about .about-orb-one {
+      top: 54px;
+      right: 3px;
+    }
+    #about .about-orb-two {
+      bottom: 23px;
+      right: 3px;
+    }
+  }
+  @media (max-width: 420px) {
+    #about .about-avatar-wrap {
+      width: 166px;
+      height: 166px;
+    }
+    #about .about-avatar {
+      width: 150px;
+      height: 150px;
+    }
+    #about .about-avatar svg {
+      width: 86px;
+      height: 86px;
+    }
+    #about .about-orb-one {
+      top: 48px;
+    }
+    #about .about-orb-two {
+      bottom: 21px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1632,8 +1756,11 @@
 </section>
 
 <div class="section-container reveal" id="projects">
-  <div class="section-label">Projects</div>
-  <!--- <p class="section-desc">A closer look at the problems I solve and the impact I aim to create.</p> -->
+  <div class="projects-intro">
+    <span class="projects-eyebrow">MY WORK</span>
+    <h2>Selected <span>Projects</span></h2>
+    <p>A closer look at the data projects where I uncover patterns, solve analytical problems, and turn findings into practical insights.</p>
+  </div>
   <hr class="section-divider">
 
   <div class="projects">
@@ -1666,8 +1793,7 @@
           <li>Translated findings into retention and cross-selling opportunities</li>
         </ul>
         <div class="project-links">
-          <a href="https://github.com/BSU04" target="_blank" rel="noopener noreferrer" class="active-link">View Project <span aria-hidden="true">→</span></a>
-          <a href="https://github.com/BSU04" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/BSU04" target="_blank" rel="noopener noreferrer" class="active-link">GitHub ↗</a>
         </div>
       </div>
     </div>
