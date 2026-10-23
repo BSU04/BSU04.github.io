@@ -629,27 +629,6 @@
     content: ""; position: absolute; top: 50%; right: calc(100% + 13px); width: 22px; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(215, 141, 233, .8));
   }
-  .hero-wave-art {
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 42%;
-    min-height: 160px;
-    pointer-events: none;
-    overflow: visible;
-  }
-  .hero-wave-art path { vector-effect: non-scaling-stroke; }
-  .hero-wave-art .wave-glow { filter: blur(10px); opacity: .42; }
-  .hero-wave-art .wave-line { fill: none; stroke-linecap: round; }
-  .hero-wave-art .wave-line-a { stroke: #ff9a68; stroke-width: 1.8; }
-  .hero-wave-art .wave-line-b { stroke: #d16de0; stroke-width: 1.25; opacity: .8; }
-  .hero-wave-art .wave-line-c { stroke: #7767e9; stroke-width: .9; opacity: .7; }
-  .hero-wave-art .wave-line-d { stroke: #ffb18b; stroke-width: .7; opacity: .55; }
-  .hero-wave-art .wave-orb { fill: #ff9b6b; stroke: #ffd2a3; stroke-width: 1; }
-  .hero-wave-art .wave-orb-halo { fill: #ff9b6b; opacity: .16; filter: blur(8px); }
   @media (max-width: 760px) {
     .hero-wave {
       width: 100vw;
@@ -665,7 +644,6 @@
     .hero-wave-side-left { left: 18px; }
     .hero-wave-side-right { right: 18px; text-align: right; }
     .hero-wave-side-left span::after, .hero-wave-side-right span::before { display: none; }
-    .hero-wave-art { height: 28%; min-height: 135px; }
   }
   @media (max-width: 420px) {
     .hero-wave { min-height: 610px; }
@@ -684,20 +662,6 @@
     background: transparent !important;
     border: 0 !important;
     box-shadow: none !important;
-  }
-  .hero-wave::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    left: 0; right: 0; bottom: 0;
-    height: 24%;
-    pointer-events: none;
-    background: linear-gradient(to bottom, rgba(16, 11, 25, 0), rgba(16, 11, 25, .52));
-  }
-  .hero-wave-art {
-    bottom: -2px;
-    mask-image: linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,.65) 82%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, rgba(0,0,0,.65) 82%, transparent 100%);
   }
   /* Keep all page sections within the same midnight-plum visual system. */
   .about-card,
@@ -1030,19 +994,6 @@
   <div class="hero-wave-side hero-wave-side-right" aria-hidden="true">
     <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span><span>Machine Learning</span>
   </div>
-  <svg class="hero-wave-art" viewBox="0 0 1600 300" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <linearGradient id="waveWarm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffb15e"/><stop offset=".34" stop-color="#e56bce"/><stop offset=".62" stop-color="#8568f2"/><stop offset="1" stop-color="#ff9b68"/></linearGradient>
-      <linearGradient id="waveFine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffb15e" stop-opacity=".05"/><stop offset=".3" stop-color="#ee78c4" stop-opacity=".75"/><stop offset=".7" stop-color="#7869ed" stop-opacity=".65"/><stop offset="1" stop-color="#ff9b68" stop-opacity=".1"/></linearGradient>
-    </defs>
-    <path class="wave-glow wave-line" d="M-30 150 C130 245 210 270 350 150 S500 12 630 105 S790 245 960 135 S1190 40 1320 145 S1490 240 1630 90" stroke="url(#waveWarm)" stroke-width="13" fill="none"/>
-    <path class="wave-line wave-line-a" d="M-30 150 C130 245 210 270 350 150 S500 12 630 105 S790 245 960 135 S1190 40 1320 145 S1490 240 1630 90" fill="none"/>
-    <path class="wave-line wave-line-b" d="M-30 170 C130 265 225 280 360 160 S505 28 645 120 S800 258 970 150 S1190 60 1330 160 S1495 255 1630 110" fill="none"/>
-    <path class="wave-line wave-line-c" d="M-30 190 C130 285 240 292 375 177 S525 52 660 140 S810 276 980 167 S1200 78 1340 180 S1510 272 1630 130" fill="none"/>
-    <path class="wave-line wave-line-d" d="M-30 132 C120 225 220 245 345 130 S500 0 620 90 S795 222 950 120 S1180 25 1310 130 S1485 220 1630 75" fill="none"/>
-    <path d="M-20 150 C130 245 210 270 350 150 S500 12 630 105 S790 245 960 135 S1190 40 1320 145 S1490 240 1630 90 L1630 300 L-20 300 Z" fill="url(#waveFine)" opacity=".12"/>
-    <circle class="wave-orb-halo" cx="505" cy="60" r="23"/><circle class="wave-orb" cx="505" cy="60" r="12"/>
-  </svg>
 </header>
 
 <!-- About Me: refined glassmorphism profile panel -->
