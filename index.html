@@ -1370,6 +1370,35 @@
     #contact .contact-form { padding: 24px 22px 28px; }
   }
 
+
+
+  /* Center the content sections below the hero; leave the hero layout untouched. */
+  .about-card,
+  .section-container,
+  .contact,
+  footer {
+    width: min(1320px, calc(100% - clamp(32px, 7vw, 112px))) !important;
+    max-width: 1320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  @media (max-width: 760px) {
+    .about-card,
+    .section-container,
+    .contact,
+    footer {
+      width: calc(100% - 32px) !important;
+    }
+  }
+  @media (max-width: 420px) {
+    .about-card,
+    .section-container,
+    .contact,
+    footer {
+      width: calc(100% - 24px) !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1730,11 +1759,11 @@
 </section>
 
 <footer class="reveal">
-  <!--<div class="footer-links">
+  <div class="footer-links">
     <a href="https://github.com/BSU04">GitHub</a>
     <a href="https://linkedin.com/in/bsu04">LinkedIn</a>
     <a href="mailto:itsmebalu52@gmail.com">Email</a>
-  </div>-->
+  </div>
   <span data-i18n="footer">&copy; 2026 Balu S Unny</span>
 </footer>
 
