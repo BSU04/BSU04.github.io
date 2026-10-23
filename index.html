@@ -1505,6 +1505,23 @@
     #contact .contact-intro > p { font-size: .99rem !important; }
   }
 
+
+
+  /* Consistent breathing room between About, Projects, Skills, Education, and Contact.
+     Hero-to-About spacing remains unchanged. */
+  #about.about-card,
+  #skills.section-container,
+  #education.section-container {
+    margin-bottom: 100px !important;
+  }
+  @media (max-width: 760px) {
+    #about.about-card,
+    #skills.section-container,
+    #education.section-container {
+      margin-bottom: 68px !important;
+    }
+  }
+
 </style>
 </head>
 <body>
