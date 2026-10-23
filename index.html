@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://yourusername.github.io">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
 <style>
   :root { --bg: #0B0A17; --card: #151323; --accent: #FF956F; --accent2: #D78DE9; --text: #F2EDF4; --muted: #B4AFC4; --border: #35283F; --accent-glow: rgba(243, 109, 145, 0.14); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2054,6 +2054,16 @@
   #skills .skill-icon-machine-learning svg { width: 40px; height: 40px; }
   #skills .skill-icon-tools svg { width: 40px; height: 40px; }
 
+
+  /* Navbar brand is plain name text; preserve the existing lift/glow hover effect without a shape. */
+  .nav-brand-text { padding: 0; background: transparent; border: 0; box-shadow: none; }
+  .nav-brand-text svg { width: 94px; height: 42px; overflow: visible; }
+  .nav-brand-text text { font-family: Allura, cursive; fill: #F2EDF4; }
+  .nav-brand-text:hover svg { transform: translateY(-1px); filter: drop-shadow(0 0 8px rgba(255, 149, 111, 0.30)); }
+  @media (max-width: 760px) {
+    .nav-brand-text svg { width: 88px; height: 39px; }
+  }
+
 </style>
 </head>
 <body>
@@ -2061,10 +2071,9 @@
 <div class="lightbox" onclick="this.classList.remove('active')"><img id="lb-img" src="" alt=""></div>
 <nav class="site-nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand" aria-label="BSU — back to top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
-        <rect x="2" y="2" width="96" height="96" rx="19" fill="#151323" stroke="#FF956F" stroke-width="4"/>
-        <text x="50" y="64" font-family="monospace" font-size="39" font-weight="700" fill="#FFB18B" text-anchor="middle">BSU</text>
+    <a href="#top" class="nav-brand nav-brand-text" aria-label="Balu — back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 54" width="94" height="42" aria-hidden="true">
+        <text x="3" y="42" font-family="Allura, cursive" font-size="51" font-weight="400" fill="#F2EDF4">Balu</text>
       </svg>
     </a>
 
@@ -2450,7 +2459,7 @@
         <svg viewBox="0 0 24 24"><path d="M2 9.2 12 4l10 5.2L12 14 2 9.2Zm4 3.1 6 3.1 6-3.1v4.1c-3.7 3.2-8.3 3.2-12 0v-4.1ZM21 10v6h1v-6h-1Z"/></svg>
       </div>
       <div class="education-details">
-        <h3 class="education-degree">Master of Science</h3>
+        <h3 class="education-degree">Master of Science (M.Sc.)</h3>
         <p class="education-field">Computer Science (Data Analytics)</p>
         <p class="education-institution">Rajagiri College of Social Sciences, Kalamassery, Kerala</p>
       </div>
@@ -2465,12 +2474,12 @@
         <svg viewBox="0 0 24 24"><path d="M2 9.2 12 4l10 5.2L12 14 2 9.2Zm4 3.1 6 3.1 6-3.1v4.1c-3.7 3.2-8.3 3.2-12 0v-4.1ZM21 10v6h1v-6h-1Z"/></svg>
       </div>
       <div class="education-details">
-        <h3 class="education-degree">Bachelor of Technology</h3>
+        <h3 class="education-degree">Bachelor of Technology (B.Tech)</h3>
         <p class="education-field">Computer Science and Engineering</p>
         <p class="education-institution">College of Engineering and Management, Punnapra, Kerala</p>
       </div>
       <div class="education-meta">
-        <span class="education-years">2017 – 2021</span>
+        <span class="education-years">2016 – 2021</span>
         <span class="education-location">India</span>
       </div>
     </article>
