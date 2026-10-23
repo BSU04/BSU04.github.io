@@ -997,6 +997,212 @@
     #skills .skills-desktop-break { display: none; }
   }
 
+
+  /* Education section — modern academic timeline inspired by the selected reference. */
+  #education.education-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(190px, .62fr) minmax(0, 1.38fr);
+    gap: clamp(24px, 3.2vw, 42px);
+    padding: clamp(24px, 2.8vw, 38px) !important;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 0% 0%, rgba(255, 149, 111, .075), transparent 44%),
+      radial-gradient(ellipse at 100% 100%, rgba(215, 141, 233, .08), transparent 44%),
+      linear-gradient(135deg, rgba(25, 18, 34, .97), rgba(20, 15, 30, .97)) !important;
+    border: 1px solid rgba(177, 119, 177, .23) !important;
+    border-radius: 18px;
+  }
+  #education .education-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px clamp(18px, 2.5vw, 34px) 8px 0;
+    border-right: 1px solid rgba(215, 141, 233, .24);
+  }
+  #education .education-index {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    color: #9b9de5;
+    font-size: .95rem;
+    letter-spacing: .03em;
+  }
+  #education .education-eyebrow {
+    margin-bottom: 8px;
+    color: #d99ccf;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+  }
+  #education .education-intro h2 {
+    margin: 0 0 18px;
+    padding: 0;
+    border: 0;
+    color: #f4edf5;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -.04em;
+  }
+  #education .education-intro h2 span {
+    background: linear-gradient(100deg, #ffad72 0%, #ff887f 48%, #d884d7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  #education .education-intro p {
+    max-width: 310px;
+    color: #c7bdcf;
+    font-size: .9rem;
+    line-height: 1.65;
+  }
+  #education .education-track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 0 0 0;
+  }
+  #education .education-track::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 13px;
+    width: 2px;
+    background: linear-gradient(180deg, #ff9a82, #c77bdf);
+    opacity: .8;
+  }
+  #education .education-card {
+    position: relative;
+    margin: 0 0 0 42px;
+    padding: 18px 18px 17px;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 14px;
+    border: 1px solid rgba(177, 119, 177, .2);
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(39, 25, 49, .88), rgba(24, 18, 37, .95));
+    box-shadow: inset 0 1px 0 rgba(255, 222, 218, .025);
+    transition: border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+  }
+  #education .education-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 149, 111, .38);
+    box-shadow: 0 10px 26px rgba(5, 2, 12, .18);
+  }
+  #education .education-card::before {
+    content: "";
+    position: absolute;
+    left: -49px;
+    top: 29px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ff9a82;
+    border: 2px solid rgba(255, 222, 218, .42);
+    box-shadow: 0 0 12px rgba(255, 149, 111, .38);
+  }
+  #education .education-card:nth-child(2)::before {
+    background: #bd72e6;
+    box-shadow: 0 0 12px rgba(189, 114, 230, .38);
+  }
+  #education .education-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(215, 141, 233, .42);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, rgba(215, 141, 233, .22), rgba(52, 30, 68, .7));
+    color: #dca0ef;
+  }
+  #education .education-card:nth-child(2) .education-icon {
+    border-color: rgba(255, 149, 111, .42);
+    background: radial-gradient(circle at 30% 20%, rgba(255, 149, 111, .2), rgba(52, 30, 48, .7));
+    color: #ff9b91;
+  }
+  #education .education-icon svg { width: 23px; height: 23px; fill: currentColor; }
+  #education .education-degree {
+    margin: 1px 0 3px;
+    color: #f4edf5;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  #education .education-field {
+    color: #e5dce9;
+    font-size: .88rem;
+    line-height: 1.45;
+  }
+  #education .education-institution {
+    margin-top: 5px;
+    color: #a99bb7;
+    font-size: .76rem;
+    line-height: 1.4;
+  }
+  #education .education-meta {
+    min-width: 82px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  #education .education-years {
+    padding: 5px 9px;
+    border: 1px solid rgba(177, 119, 177, .22);
+    border-radius: 999px;
+    background: rgba(143, 91, 151, .12);
+    color: #e1d5e5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem;
+    white-space: nowrap;
+  }
+  #education .education-location {
+    color: #b7a9c3;
+    font-size: .7rem;
+    white-space: nowrap;
+  }
+  #education .education-location::before {
+    content: "⌖";
+    color: #e77fca;
+    font-size: .95rem;
+    margin-right: 5px;
+  }
+  @media (max-width: 760px) {
+    #education.education-timeline {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 26px 20px !important;
+    }
+    #education .education-intro {
+      padding: 0 0 22px;
+      border-right: 0;
+      border-bottom: 1px solid rgba(215, 141, 233, .2);
+    }
+    #education .education-intro p { max-width: 480px; }
+    #education .education-intro h2 { font-size: clamp(2rem, 8vw, 2.6rem); }
+    #education .education-track { gap: 13px; }
+    #education .education-card { margin-left: 30px; padding: 15px 13px; grid-template-columns: 36px minmax(0, 1fr); gap: 11px; }
+    #education .education-card::before { left: -37px; width: 12px; height: 12px; }
+    #education .education-track::before { left: 11px; }
+    #education .education-icon { width: 36px; height: 36px; }
+    #education .education-icon svg { width: 20px; height: 20px; }
+    #education .education-meta { grid-column: 2; flex-direction: row; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  }
+  @media (max-width: 420px) {
+    #education.education-timeline { padding: 22px 15px !important; }
+    #education .education-card { margin-left: 25px; }
+    #education .education-card::before { left: -32px; }
+    #education .education-degree { font-size: .94rem; }
+    #education .education-field { font-size: .82rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -1273,17 +1479,44 @@
   </div>
 </div>
 
-<div class="section-container reveal" id="education">
-  <h2 data-i18n="edu">Education</h2>
-  <div class="experience">
-    <div class="job">
-      <h3 data-i18n="ed1t">MSc Computer Science</h3>
-      <div class="meta" data-i18n="ed1m">Rajagiri College of Social Sciences, Kalamassery, Kerala &mdash; 2024</div>
-    </div>
-    <div class="job">
-      <h3 data-i18n="ed1t">BTech Computer Science</h3>
-      <div class="meta" data-i18n="ed1m">College of Engineering and Management, Punnapra, Kerala &mdash; 2021</div>
-    </div>
+<div class="section-container reveal education-timeline" id="education">
+  <div class="education-intro">
+    <span class="education-index">01&nbsp; | &nbsp;Modern Timeline Style</span>
+    <span class="education-eyebrow">EDUCATION</span>
+    <h2>My <span>Academic</span><br><span>Journey</span></h2>
+    <p>A strong foundation in computer science and data analytics, combined with continuous learning and hands-on projects.</p>
+  </div>
+
+  <div class="education-track">
+    <article class="education-card">
+      <div class="education-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 9.2 12 4l10 5.2L12 14 2 9.2Zm4 3.1 6 3.1 6-3.1v4.1c-3.7 3.2-8.3 3.2-12 0v-4.1ZM21 10v6h1v-6h-1Z"/></svg>
+      </div>
+      <div class="education-details">
+        <h3 class="education-degree">Master of Science</h3>
+        <p class="education-field">Computer Science (Data Analytics)</p>
+        <p class="education-institution">Rajagiri College of Social Sciences, Kalamassery, Kerala</p>
+      </div>
+      <div class="education-meta">
+        <span class="education-years">2022 – 2024</span>
+        <span class="education-location">India</span>
+      </div>
+    </article>
+
+    <article class="education-card">
+      <div class="education-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 9.2 12 4l10 5.2L12 14 2 9.2Zm4 3.1 6 3.1 6-3.1v4.1c-3.7 3.2-8.3 3.2-12 0v-4.1ZM21 10v6h1v-6h-1Z"/></svg>
+      </div>
+      <div class="education-details">
+        <h3 class="education-degree">Bachelor of Technology</h3>
+        <p class="education-field">Computer Science and Engineering</p>
+        <p class="education-institution">College of Engineering and Management, Punnapra, Kerala</p>
+      </div>
+      <div class="education-meta">
+        <span class="education-years">2017 – 2021</span>
+        <span class="education-location">India</span>
+      </div>
+    </article>
   </div>
 </div>
 
