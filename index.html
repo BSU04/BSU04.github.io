@@ -1646,6 +1646,393 @@
     }
   }
 
+
+  /* Selected hero experiment: centered curved tool-logo arc.
+     Only the hero is changed; the sections below it retain their current styling. */
+  .hero-wave {
+    height: auto !important;
+    min-height: calc(100vh - 66px) !important;
+    min-height: calc(100svh - 66px) !important;
+    padding: 36px clamp(22px, 4vw, 72px) 26px !important;
+  }
+  .hero-wave-eyebrow,
+  .hero-wave-side {
+    display: none !important;
+  }
+  .hero-wave-content {
+    width: min(900px, 100%) !important;
+  }
+  .hero-wave-title {
+    margin-bottom: 22px !important;
+  }
+  .hero-wave-description {
+    margin-bottom: 22px !important;
+  }
+  .hero-wave-actions {
+    margin-bottom: 0;
+  }
+  .hero-tool-arc {
+    position: relative;
+    width: min(690px, 86vw);
+    height: 145px;
+    margin: 14px auto 0;
+    overflow: visible;
+    isolation: isolate;
+  }
+  .hero-tool-arc-line {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .hero-tool-node {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid rgba(177, 119, 177, .42);
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(41, 27, 51, .98), rgba(20, 15, 31, .98));
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 23px rgba(215, 141, 233, .13), inset 0 1px 0 rgba(255, 224, 225, .06);
+    transform: translate(-50%, -50%);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .hero-tool-node:hover {
+    transform: translate(-50%, -55%);
+    border-color: rgba(255, 149, 111, .7);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 30px rgba(243, 109, 145, .22), inset 0 1px 0 rgba(255, 224, 225, .08);
+  }
+  .hero-tool-node img,
+  .hero-tool-node > svg {
+    display: block;
+    width: 34px;
+    height: 34px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .hero-tool-python {
+    border-color: rgba(120, 126, 223, .42);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 23px rgba(55, 118, 171, .17);
+  }
+  .hero-tool-sql {
+    border-color: rgba(243, 109, 145, .48);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 23px rgba(243, 109, 145, .17);
+  }
+  .hero-tool-sql > svg { width: 35px; height: 35px; }
+  .hero-tool-powerbi {
+    border-color: rgba(242, 200, 17, .5);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 23px rgba(242, 200, 17, .14);
+  }
+  .hero-tool-powerbi img { width: 33px; height: 33px; }
+  .hero-tool-excel {
+    border-color: rgba(48, 170, 107, .5);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 23px rgba(48, 170, 107, .16);
+  }
+  .hero-tool-excel img { width: 34px; height: 34px; }
+  .hero-tool-sklearn {
+    width: 80px;
+    height: 58px;
+    padding: 7px;
+    border-radius: 999px;
+    border-color: rgba(215, 141, 233, .56);
+    box-shadow: 0 0 0 5px rgba(31, 20, 40, .34), 0 0 25px rgba(215, 141, 233, .17);
+  }
+  /* The scikit-learn mark contains dark lettering, so a small pale inset preserves its legibility
+     without altering the official logo's colors or proportions. */
+  .hero-tool-sklearn .hero-tool-sklearn-logo {
+    width: 58px;
+    height: auto;
+    max-width: none;
+    max-height: 30px;
+    object-fit: contain;
+    border-radius: 3px;
+    background: #f5f0f7;
+    padding: 2px 3px;
+  }
+  @media (max-width: 760px) {
+    .hero-wave {
+      min-height: calc(100vh - 60px) !important;
+      min-height: calc(100svh - 60px) !important;
+      padding: 32px 18px 22px !important;
+      margin-top: -40px;
+      margin-bottom: 28px;
+    }
+    .hero-wave-title {
+      font-size: clamp(3.3rem, 10.5vw, 5.5rem) !important;
+      line-height: .95 !important;
+      margin-bottom: 18px !important;
+    }
+    .hero-wave-description {
+      font-size: .94rem !important;
+      max-width: 500px !important;
+      margin-bottom: 19px !important;
+    }
+    .hero-wave-actions a { padding: 11px 18px !important; font-size: .86rem !important; }
+    .hero-tool-arc {
+      width: min(600px, 94vw);
+      height: 122px;
+      margin-top: 12px;
+    }
+    .hero-tool-node { width: 50px; height: 50px; padding: 8px; }
+    .hero-tool-node img,
+    .hero-tool-node > svg { width: 29px; height: 29px; }
+    .hero-tool-sql > svg { width: 30px; height: 30px; }
+    .hero-tool-sklearn { width: 70px; height: 52px; padding: 6px; }
+    .hero-tool-sklearn .hero-tool-sklearn-logo { width: 52px; max-height: 27px; }
+  }
+  @media (max-width: 420px) {
+    .hero-wave {
+      min-height: calc(100svh - 60px) !important;
+      padding: 26px 12px 20px !important;
+    }
+    .hero-wave-title { font-size: clamp(2.95rem, 11.7vw, 4rem) !important; }
+    .hero-wave-description { font-size: .9rem !important; }
+    .hero-tool-arc { width: calc(100vw - 28px); height: 105px; margin-top: 10px; }
+    .hero-tool-node { width: 44px; height: 44px; padding: 7px; }
+    .hero-tool-node img,
+    .hero-tool-node > svg { width: 25px; height: 25px; }
+    .hero-tool-sql > svg { width: 26px; height: 26px; }
+    .hero-tool-sklearn { width: 64px; height: 46px; padding: 5px; }
+    .hero-tool-sklearn .hero-tool-sklearn-logo { width: 49px; max-height: 24px; }
+  }
+
+
+  /* Centered technology row in circular badges — matching the existing plum/coral/pink/violet theme. */
+  .hero-tool-row {
+    width: min(930px, 100%);
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(14px, 2.2vw, 30px);
+  }
+  .hero-tool-item {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #e4d8e8;
+    font-size: .92rem;
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+  .hero-tool-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 22%, rgba(255, 149, 111, .10), transparent 57%),
+      linear-gradient(145deg, rgba(42, 27, 52, .97), rgba(20, 15, 31, .98));
+    border: 1px solid rgba(201, 130, 187, .36);
+    box-shadow: 0 0 18px rgba(215, 141, 233, .08), inset 0 1px 0 rgba(255, 224, 225, .05);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .hero-tool-item:hover .hero-tool-icon {
+    transform: translateY(-2px);
+    border-color: rgba(255, 149, 111, .68);
+    box-shadow: 0 0 22px rgba(243, 109, 145, .15), inset 0 1px 0 rgba(255, 224, 225, .07);
+  }
+  .hero-tool-icon img,
+  .hero-tool-icon svg {
+    display: block;
+    width: 31px;
+    height: 31px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .hero-tool-icon.hero-tool-python {
+    border-color: rgba(120, 126, 223, .40);
+    box-shadow: 0 0 18px rgba(55, 118, 171, .10);
+  }
+  .hero-tool-icon.hero-tool-sql {
+    border-color: rgba(243, 109, 145, .44);
+    box-shadow: 0 0 18px rgba(243, 109, 145, .09);
+  }
+  .hero-tool-icon.hero-tool-powerbi {
+    border-color: rgba(255, 181, 110, .44);
+    box-shadow: 0 0 18px rgba(255, 149, 111, .09);
+  }
+  .hero-tool-icon.hero-tool-excel {
+    border-color: rgba(215, 141, 233, .40);
+    box-shadow: 0 0 18px rgba(215, 141, 233, .09);
+  }
+  .hero-tool-icon.hero-tool-sklearn {
+    border-color: rgba(215, 141, 233, .50);
+    box-shadow: 0 0 18px rgba(215, 141, 233, .12);
+  }
+  .hero-tool-icon .hero-tool-sklearn-logo {
+    width: 33px;
+    height: 27px;
+    object-fit: contain;
+    max-height: 27px;
+    padding: 2px;
+    border-radius: 4px;
+    background: #f5f0f7;
+  }
+  .hero-tool-label { display: inline-block; }
+  @media (max-width: 900px) {
+    .hero-tool-row {
+      width: min(790px, 100%);
+      gap: 13px;
+    }
+    .hero-tool-item { gap: 8px; font-size: .86rem; }
+    .hero-tool-icon { width: 44px; height: 44px; flex-basis: 44px; padding: 7px; }
+    .hero-tool-icon img, .hero-tool-icon svg { width: 29px; height: 29px; }
+    .hero-tool-icon .hero-tool-sklearn-logo { width: 31px; height: 25px; }
+  }
+  @media (max-width: 760px) {
+    .hero-tool-row {
+      width: min(430px, 100%);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, max-content));
+      justify-content: center;
+      column-gap: 30px;
+      row-gap: 16px;
+      margin-top: 24px;
+    }
+    .hero-tool-item { justify-content: flex-start; font-size: .88rem; }
+    .hero-tool-icon { width: 43px; height: 43px; flex-basis: 43px; }
+  }
+  @media (max-width: 420px) {
+    .hero-tool-row {
+      width: 100%;
+      column-gap: 16px;
+      row-gap: 14px;
+      margin-top: 20px;
+    }
+    .hero-tool-item { gap: 7px; font-size: .78rem; }
+    .hero-tool-icon { width: 38px; height: 38px; flex-basis: 38px; padding: 6px; }
+    .hero-tool-icon img, .hero-tool-icon svg { width: 25px; height: 25px; }
+    .hero-tool-icon .hero-tool-sklearn-logo { width: 27px; height: 22px; padding: 1px; }
+  }
+
+
+  /* Selected Design D: individual technology pills with circular logo badges. */
+  .hero-tool-row {
+    width: min(1120px, 100%);
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 1.25vw, 20px);
+    flex-wrap: wrap;
+  }
+  .hero-tool-item {
+    min-width: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 5px 17px 5px 5px;
+    min-height: 52px;
+    white-space: nowrap;
+    border-radius: 999px;
+    border: 1px solid rgba(177, 119, 177, .38);
+    background: linear-gradient(125deg, rgba(33, 22, 43, .72), rgba(20, 15, 31, .62));
+    color: #e9dfed;
+    font-size: .9rem;
+    font-weight: 500;
+    line-height: 1.2;
+    box-shadow: inset 0 1px 0 rgba(255, 224, 225, .025);
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .hero-tool-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 149, 111, .65);
+    background: linear-gradient(125deg, rgba(49, 28, 52, .92), rgba(26, 17, 37, .86));
+    box-shadow: 0 8px 20px rgba(215, 141, 233, .09);
+  }
+  .hero-tool-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: grid;
+    place-items: center;
+    padding: 7px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(47, 30, 56, .99), rgba(22, 15, 32, .99));
+    border: 1px solid rgba(201, 130, 187, .42);
+    box-shadow: 0 0 14px rgba(215, 141, 233, .06), inset 0 1px 0 rgba(255, 224, 225, .05);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .hero-tool-item:hover .hero-tool-icon {
+    border-color: rgba(255, 149, 111, .74);
+    box-shadow: 0 0 18px rgba(243, 109, 145, .14), inset 0 1px 0 rgba(255, 224, 225, .07);
+  }
+  .hero-tool-icon img,
+  .hero-tool-icon > svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .hero-tool-icon.hero-tool-python { border-color: rgba(104, 131, 220, .48); }
+  .hero-tool-icon.hero-tool-sql { border-color: rgba(243, 109, 145, .48); }
+  .hero-tool-icon.hero-tool-powerbi { border-color: rgba(255, 181, 110, .48); }
+  .hero-tool-icon.hero-tool-excel { border-color: rgba(215, 141, 233, .43); }
+  .hero-tool-icon.hero-tool-sklearn { border-color: rgba(215, 141, 233, .52); }
+  .hero-tool-icon .hero-tool-sklearn-logo {
+    width: 31px;
+    height: 25px;
+    max-width: none;
+    max-height: none;
+    padding: 0;
+    border-radius: 0;
+    object-fit: contain;
+    background: transparent;
+  }
+  @media (max-width: 900px) {
+    .hero-tool-row { gap: 10px; }
+    .hero-tool-item { min-height: 48px; gap: 8px; padding: 4px 13px 4px 4px; font-size: .84rem; }
+    .hero-tool-icon { width: 40px; height: 40px; flex-basis: 40px; }
+  }
+  @media (max-width: 760px) {
+    .hero-tool-row {
+      width: min(510px, 100%);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .hero-tool-item { min-height: 46px; font-size: .82rem; }
+    .hero-tool-icon { width: 38px; height: 38px; flex-basis: 38px; padding: 6px; }
+    .hero-tool-icon img, .hero-tool-icon > svg { width: 25px; height: 25px; }
+    .hero-tool-icon .hero-tool-sklearn-logo { width: 29px; height: 22px; }
+  }
+  @media (max-width: 420px) {
+    .hero-tool-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      justify-content: center;
+      gap: 10px 8px;
+      margin-top: 20px;
+    }
+    .hero-tool-item { min-height: 42px; gap: 7px; padding: 3px 10px 3px 3px; font-size: .77rem; }
+    .hero-tool-icon { width: 35px; height: 35px; flex-basis: 35px; padding: 5px; }
+    .hero-tool-icon img, .hero-tool-icon > svg { width: 23px; height: 23px; }
+    .hero-tool-icon .hero-tool-sklearn-logo { width: 27px; height: 21px; }
+  }
+
 </style>
 </head>
 <body>
@@ -1690,20 +2077,72 @@
 <div class="container">
 
 <header id="top" class="hero-wave">
-  <div class="hero-wave-side hero-wave-side-left" aria-hidden="true">
-    <span>Curiosity</span><span>Analysis</span><span>Insights</span><span>Impact</span>
-  </div>
   <div class="hero-wave-content">
-    <p class="hero-wave-eyebrow">Analyze · Visualize · Solve · Grow</p>
     <h1 class="hero-wave-title">Data<br><span class="hero-gradient">Creates</span><br>Opportunities</h1>
     <p class="hero-wave-description">I analyze data, build insightful dashboards, and apply machine learning to solve real-world business problems.</p>
     <div class="hero-wave-actions">
       <a class="hero-wave-primary" href="#projects">Explore My Work <span aria-hidden="true">→</span></a>
       <a class="hero-wave-secondary" href="#contact">Let’s Connect</a>
     </div>
-  </div>
-  <div class="hero-wave-side hero-wave-side-right" aria-hidden="true">
-    <span>Python</span><span>SQL</span><span>Power BI</span><span>Excel</span><span>Machine Learning</span>
+
+    <div class="hero-tool-row" role="list" aria-label="Technologies and tools">
+      <div class="hero-tool-item" role="listitem">
+        <span class="hero-tool-icon hero-tool-python" aria-hidden="true">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="" decoding="async">
+        </span>
+        <span class="hero-tool-label">Python</span>
+      </div>
+
+      <div class="hero-tool-item" role="listitem">
+        <span class="hero-tool-icon hero-tool-sql" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <ellipse cx="24" cy="10" rx="14" ry="6" fill="#ff9a82"/>
+            <path d="M10 10v24c0 3.3 6.3 6 14 6s14-2.7 14-6V10" fill="#d95e68"/>
+            <path d="M10 18c0 3.3 6.3 6 14 6s14-2.7 14-6M10 26c0 3.3 6.3 6 14 6s14-2.7 14-6" fill="none" stroke="#ffd0c2" stroke-width="2.2"/>
+            <path d="M10 10v24c0 3.3 6.3 6 14 6s14-2.7 14-6V10" fill="none" stroke="#ff9a82" stroke-width="2"/>
+          </svg>
+        </span>
+        <span class="hero-tool-label">SQL</span>
+      </div>
+
+      <div class="hero-tool-item" role="listitem">
+        <span class="hero-tool-icon hero-tool-powerbi" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M8 35h7V23H8z" fill="#f6c64a"/>
+            <path d="M19 35h7V14h-7z" fill="#f2b900"/>
+            <path d="M30 35h7V7h-7z" fill="#f2c811"/>
+            <path d="M6 39h34" stroke="#ffdf76" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="hero-tool-label">Power BI</span>
+      </div>
+
+      <div class="hero-tool-item" role="listitem">
+        <span class="hero-tool-icon hero-tool-excel" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <path d="M18 7h22a3 3 0 0 1 3 3v28a3 3 0 0 1-3 3H18z" fill="#217346"/>
+            <path d="M18 12h25v6H18z" fill="#33a36b"/>
+            <path d="M18 21h25v6H18z" fill="#16834a"/>
+            <path d="M18 30h25v6H18z" fill="#107c41"/>
+            <path d="M5 12 25 8v32L5 36z" fill="#185c37"/>
+            <path d="m10 18 3.6 6-3.6 6h3.8l2-3.9 2.1 3.9h3.7l-3.7-6 3.6-6h-3.7l-2 3.9-2.1-3.9z" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="hero-tool-label">Excel</span>
+      </div>
+
+      <div class="hero-tool-item" role="listitem">
+        <span class="hero-tool-icon hero-tool-sklearn" aria-hidden="true">
+          <svg class="hero-tool-sklearn-logo" viewBox="0 0 52 36" aria-hidden="true" focusable="false">
+            <circle cx="13" cy="18" r="9" fill="#3498c9"/>
+            <ellipse cx="29" cy="18" rx="13" ry="11" fill="#f7931e"/>
+            <path d="M21 7.8c3.1-2.5 8.5-3.2 12.8-.6" fill="none" stroke="#fbb45c" stroke-width="2" stroke-linecap="round"/>
+            <text x="31" y="22" font-family="Georgia,serif" font-size="10.5" font-style="italic" font-weight="700" text-anchor="middle" fill="#2b1835">learn</text>
+          </svg>
+        </span>
+        <span class="hero-tool-label">Machine Learning</span>
+      </div>
+    </div>
   </div>
 </header>
 
