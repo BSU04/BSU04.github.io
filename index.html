@@ -2143,6 +2143,69 @@
     }
   }
 
+
+  /* Dataset metadata badges: between project description and technology tags. */
+  #projects .project-metadata {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 16px;
+  }
+  #projects .project-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 6px 15px 6px 10px;
+    border: 1.5px solid;
+    border-radius: 999px;
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+    background: rgba(23, 17, 35, .62);
+  }
+  #projects .project-meta-badge svg {
+    display: block;
+    width: 23px;
+    height: 23px;
+    flex: 0 0 23px;
+  }
+  #projects .project-meta-size {
+    color: #f1e6f6;
+    border-color: rgba(215, 141, 233, .86);
+    box-shadow: inset 0 0 14px rgba(215, 141, 233, .045);
+  }
+  #projects .project-meta-size svg {
+    fill: none;
+    stroke: #d78de9;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #projects .project-meta-type {
+    color: #88f0d4;
+    border-color: rgba(45, 216, 177, .88);
+    background: rgba(5, 45, 42, .25);
+    box-shadow: inset 0 0 14px rgba(45, 216, 177, .045);
+  }
+  #projects .project-meta-type svg {
+    fill: none;
+    stroke: #35d6b4;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  @media (max-width: 760px) {
+    #projects .project-metadata { gap: 8px; margin-bottom: 14px; }
+    #projects .project-meta-badge { min-height: 40px; font-size: .84rem; padding-right: 12px; }
+  }
+  @media (max-width: 420px) {
+    #projects .project-meta-badge { font-size: .78rem; gap: 7px; padding: 6px 10px 6px 8px; }
+    #projects .project-meta-badge svg { width: 20px; height: 20px; flex-basis: 20px; }
+  }
+
 </style>
 </head>
 <body>
@@ -2290,7 +2353,8 @@
   <div class="projects">
 
     <!-- Project Card 1 -->
-    <div class="card-horizontal">
+    <!-- For future projects, add data-dataset-size and data-data-type to each .card-horizontal. -->
+    <div class="card-horizontal" data-dataset-size="541,909 transactions" data-data-type="Real-world data">
       <div class="project-img-box">
         <img src="project-1.png" alt="E-commerce Customer Intelligence Representation">
       </div>
@@ -2301,20 +2365,20 @@
         <!-- Refined Tech Stack Tags -->
         <div class="project-tech-tags">
           <span class="tech-tag">Python</span>
-          <span class="tech-tag">EDA</span>
-          <span class="tech-tag">RFM</span>
+          <span class="tech-tag">RFM Analysis</span>
           <span class="tech-tag">Customer Segmentation</span>
-          <span class="tech-tag">Customer Value Prediction</span>
+          <span class="tech-tag">Predictive Analytics</span>
+          <span class="tech-tag">Random Forest</span>
           <span class="tech-tag">Market Basket Analysis</span>
         </div>
         <p class="project-desc">
-          Analyzed a large-scale e-commerce transactional dataset to understand customer behaviour, identify key business drivers, and generate actionable insights to support customer retention and business growth.
+          Turned raw online retail transactions into customer and product intelligence to help a retailer improve customer retention, prioritise valuable shoppers, and discover opportunities to increase basket value.
         </p>
         <ul class="project-bullets">
-          <li>Analyzed transactional data to uncover sales trends and customer purchasing patterns</li>
-          <li>Built RFM customer segments to identify high-value and at-risk customers</li>
-          <li>Translated findings into retention and cross-selling opportunities</li>
-          <li>Translated findings into retention and cross-selling opportunities</li>
+          <li><strong>Customer Lifecycle:</strong> Found that 47.9% of customers were Hibernating or Lost, highlighting re-engagement opportunities.</li>
+          <li><strong>Customer Value Prediction:</strong> Identified first-day spending, purchase quantity, and product variety as key predictors of future customer value.</li>
+          <li><strong>Predictive Modelling:</strong> Used SMOTE to address class imbalance and achieved 73% recall for high-value customers with Random Forest.</li>
+          <li><strong>Product Affinity:</strong> Analysed 18,480 baskets across 3,876 products, generating 76 association rules for product bundling and cross-selling.</li>
         </ul>
         <div class="project-links">
           <a href="https://github.com/BSU04/ecommerce-customer-intelligence" target="_blank" rel="noopener noreferrer" class="active-link">GitHub ↗</a>
@@ -2323,7 +2387,7 @@
     </div>
 
     <!-- Project Card 2 -->
-    <div class="card-horizontal">
+    <div class="card-horizontal" data-dataset-size="99,441 orders" data-data-type="Real-world data">
       <div class="project-img-box">
         <img src="project-2.jpg" alt="Olist Sales Analytics Representation">
       </div>
@@ -2337,16 +2401,17 @@
           <span class="tech-tag">Power Query</span>
           <span class="tech-tag">DAX</span>
           <span class="tech-tag">Data Modeling</span>
-          <span class="tech-tag">Dashboard</span>
+          <span class="tech-tag">KPI Analytics</span>
+          <span class="tech-tag">Product Performance Analytics</span>
         </div>
         <p class="project-desc">
-          Processed transactional records and structured Power BI data models to track sales trends and business growth metrics.
+          Transformed e-commerce data from 9 interconnected tables into business insights, helping identify sales growth opportunities, customer retention gaps, product demand patterns, and delivery issues affecting customer satisfaction.
         </p>
         <ul class="project-bullets">
-          <li>Structured relational data models across multiple transactional datasets</li>
-          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
-          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
-          <li>Designed interactive Power BI dashboards to visualize key performance indicators</li>
+          <li><strong>Sales Performance:</strong> Analysed revenue across product categories and regions to identify key contributors and growth opportunities.</li>
+          <li><strong>Customer Behaviour:</strong> Found that only 3.1% of customers made repeat purchases, revealing a major retention opportunity.</li>
+          <li><strong>Product and Market Insights:</strong> Identified leading product categories and São Paulo as the top sales market, informing merchandising and regional growth priorities.</li>
+          <li><strong>Delivery Experience:</strong> Found that average reviews dropped from 4.3 for early deliveries to 2.6 for late deliveries, highlighting the importance of delivery reliability.</li>
         </ul>
         <div class="project-links">
           <a href="https://github.com/BSU04/olist-ecommerce-analytics" target="_blank" class="active-link">GitHub ↗</a>
@@ -2821,6 +2886,61 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Reusable project dataset badges.
+// For every new project, add data-dataset-size and data-data-type to its .card-horizontal.
+// The script positions badges directly after .project-desc and places tech tags beneath them.
+(function () {
+  const projectCards = document.querySelectorAll('#projects .card-horizontal[data-dataset-size][data-data-type]');
+
+  projectCards.forEach(card => {
+    const description = card.querySelector('.project-desc');
+    const techTags = card.querySelector('.project-tech-tags');
+    const datasetSize = (card.dataset.datasetSize || '').trim();
+    const dataType = (card.dataset.dataType || '').trim();
+
+    if (!description || !techTags || !datasetSize || !dataType) return;
+
+    let metadata = card.querySelector('.project-metadata');
+    if (!metadata) {
+      metadata = document.createElement('div');
+      metadata.className = 'project-metadata';
+      metadata.setAttribute('aria-label', 'Dataset information');
+
+      const sizeBadge = document.createElement('span');
+      sizeBadge.className = 'project-meta-badge project-meta-size';
+      sizeBadge.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <ellipse cx="12" cy="5" rx="7.5" ry="3"></ellipse>
+          <path d="M4.5 5v14c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V5"></path>
+          <path d="M4.5 10c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3M4.5 15c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"></path>
+        </svg>
+        <span class="project-meta-value"></span>`;
+      sizeBadge.querySelector('.project-meta-value').textContent = datasetSize;
+
+      const typeBadge = document.createElement('span');
+      typeBadge.className = 'project-meta-badge project-meta-type';
+      typeBadge.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"></path>
+        </svg>
+        <span class="project-meta-value"></span>`;
+      typeBadge.querySelector('.project-meta-value').textContent = dataType;
+
+      metadata.append(sizeBadge, typeBadge);
+    } else {
+      const sizeValue = metadata.querySelector('.project-meta-size .project-meta-value');
+      const typeValue = metadata.querySelector('.project-meta-type .project-meta-value');
+      if (sizeValue) sizeValue.textContent = datasetSize;
+      if (typeValue) typeValue.textContent = dataType;
+    }
+
+    description.insertAdjacentElement('afterend', metadata);
+    metadata.insertAdjacentElement('afterend', techTags);
+  });
+})();
+
 </script>
 </body>
 </html>
